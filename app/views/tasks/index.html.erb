@@ -1,6 +1,16 @@
 <h1> To-do 📋</h1>
 <ol>
-  <% @tasks.each do |@task| %>
-    <li> @task.title </li>
+  <% @tasks.each do |task| %>
+   <li>
+   <div>
+   <%=link_to task.title, task_path(task.id)%>
+   </div>
+   <div>
+  <%= link_to "Delete 🗑",
+    task_path(task.id),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+   </div>
+   </li>
   <% end %>
 </ol>
